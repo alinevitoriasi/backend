@@ -14,8 +14,8 @@ module.exports = () => {
 
   // Configuração do rate limiter
   const limiter = rateLimit({
-    windowMs: 30 * 60 * 1000, // 15 minutos
-    max: 1000, // limite de 100 requisições por IP por janela de tempo
+    windowMs: 15 * 60 * 1000, // 15 minutos
+    max: 100, // limite de 100 requisições por IP por janela de tempo
     message: 'Muitas requisições de seu IP, por favor tente novamente mais tarde.'
   });
   app.use(limiter);

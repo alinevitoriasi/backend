@@ -18,7 +18,7 @@ postController.create = async function (req, res, next) {
     });
 
     await modelPost.create(newPost);
-    res.status(200).json({ message: 'Criado com Sucesso!' });
+    res.status(200).json({ message: 'Criado com Sucesso!' , id: newPost._id});
   }
   catch(err) {
     next(err)
@@ -78,8 +78,19 @@ postController.list = async function (req, res, next) {
         });
      }
 
+     const formatDocumentUser = (posts) =>{
+      return posts.map(post => {
+      return {
+        _id: post._id,
+        text: post.text,
+        type: post.type,
+      };
+    }).reverse();
+  }
+
+
      return res.json({
-      posts: formatDocument(postIsVisible)
+      posts: formatDocumentUser(postIsVisible)
     });
 
   } catch (err) {

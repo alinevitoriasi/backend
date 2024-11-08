@@ -25,7 +25,7 @@ commentController.create = async function (req, res, next) {
     post.comments.push(newComment._id);
     await post.save();
 
-    return res.status(201).json(newComment);
+    return res.status(201).json({message: 'Comentário criado com Sucesso!'});
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
@@ -47,10 +47,8 @@ commentController.getCommentsByPost  = async function (req, res, next) {
 
     const userId = req.user.id; // ID do usuário logado
     const commentsWithEditFlag = comments.map(comment => ({
-      _id: comment._id,
       content: comment.content,
       isEditable: comment.author._id.equals(userId),
-      isVisible: comment.isVisible
     }));
     if(req.user.role ==='admin'){
       return res.status(200).json(commentsWithEditFlag);

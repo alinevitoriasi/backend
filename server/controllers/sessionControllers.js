@@ -23,7 +23,7 @@ sessionController.login = async function (req, res, next) {
     req.session.user = user;
     req.session.user.save()
 
-    return res.status(200).json({token:token , isAdmin:user?.isAdmin, message:'Login realizado com sucesso!'})
+    return res.status(200).json({token:token,  isAdmin:user?.isAdmin,  message:'Login realizado com sucesso!'})
   }
   catch(err) {
     return res.status(500).json(err)

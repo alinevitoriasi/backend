@@ -63,7 +63,7 @@ userController.newUser = async (req, res) => {
         })
 
         await newUser.save()
-        res.status(201).json({ message:'Usuário criado com sucesso'})
+        res.status(201).json({ message:'Usuário criado com sucesso', email: req.body.email})
     }
     catch(err){
         console.log(err)
