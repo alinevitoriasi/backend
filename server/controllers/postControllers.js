@@ -12,8 +12,10 @@ postController.create = async function (req, res, next) {
       location: req.body.location,
       type: req.body.type,
       isAnonymous: req.body.isAnonymous,
+      createdAt: new Date(),
       author: {
-        id: req.user.id
+        id: req.user.id,
+        username: req.user.username
       },
     });
 

@@ -18,6 +18,7 @@ const PostSchema = new Schema({
     required: [true, 'Campo obrigatório!']
   },
   date: String,
+  createdAt: String,
   type: [String],
   isAnonymous: Boolean,
   isVisible: {

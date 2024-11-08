@@ -18,7 +18,7 @@ sessionController.login = async function (req, res, next) {
       return res.status(401).json({success:false, message:'Credenciais inválidas. Verifique seu e-mail e senha e tente novamente.'})
     }
 
-    const token = jwt.sign({id: user._id, role: user.role}, process.env.SECRET_KEY,{expiresIn:"1d"})
+    const token = jwt.sign({id: user._id, username: user.username, role: user.role}, process.env.SECRET_KEY,{expiresIn:"1d"})
 
     req.session.user = user;
     req.session.user.save()
